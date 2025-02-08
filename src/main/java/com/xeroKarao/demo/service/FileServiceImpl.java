@@ -33,7 +33,6 @@ public class FileServiceImpl implements FileService{
     public List<FileData> uploadFile(MultipartFile[] files) {
 
         List<FileData> inputFiles = new ArrayList<>();
-
         Arrays.asList(files).forEach(file -> {
             String originalFileName = file.getOriginalFilename();
             if(originalFileName == null){
