@@ -45,7 +45,7 @@ public class BucketUtil {
     // Initialize GCP Storage after Spring sets up the beans
     @PostConstruct
     private void initializeStorage() throws IOException {
-        try (InputStream credentialStream = new FileInputStream(gcpConfigFile)) {
+        try (InputStream credentialStream = new ClassPathResource(gcpConfigFile).getInputStream()) {
             this.storage = StorageOptions.newBuilder()
                     .setCredentials(GoogleCredentials.fromStream(credentialStream))
                     .setProjectId(gcpProjectId)
